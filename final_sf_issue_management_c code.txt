@@ -1,0 +1,2957 @@
+view: sf_issue_management__c {
+  sql_table_name: dbo.SF_ISSUE_MANAGEMENT__C ;;
+  label: " "
+
+
+  dimension: ticket_age {
+    type: number
+    sql: DATEDIFF(day, ${TABLE}.CREATEDDATE, ${TABLE}.COMPLETION_DATE__C) ;;
+  }
+
+  measure: ticket_age_ave {
+    type:  average
+    sql: ${ticket_age} ;;
+  }
+
+  #ID is the primary key of SalesForce Tickets
+  #the HTML links Looker to SalesForce with a link and favicon
+  dimension: id {
+    primary_key: yes
+    type: string
+    sql: ${TABLE}.ID ;;
+    html: <a href="https://na9.salesforce.com/{{ value }}" target="_new">
+    <img src="https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/nav/salesforce-cloud-logo-sm.png" height=25 width=25> {{value}} </a>
+    ;;
+  }
+
+  dimension: account_name__c {
+    type: string
+    sql: ${TABLE}.ACCOUNT_NAME__C ;;
+  }
+
+  dimension: account_owner_email__c {
+    type: string
+    sql: ${TABLE}.ACCOUNT_OWNER_EMAIL__C ;;
+  }
+
+  dimension: account_owner_id__c {
+    type: string
+    sql: ${TABLE}.ACCOUNT_OWNER_ID__C ;;
+  }
+
+  dimension: account_representative__c {
+    type: string
+    sql: ${TABLE}.ACCOUNT_REPRESENTATIVE__C ;;
+  }
+
+  dimension: accountnumber__c {
+    type: string
+    sql: ${TABLE}.ACCOUNTNUMBER__C ;;
+  }
+
+  dimension: adv_parcel_id__c {
+    type: string
+    sql: ${TABLE}.ADV_PARCEL_ID__C ;;
+  }
+
+  dimension: affected_address__c {
+    type: string
+    sql: ${TABLE}.AFFECTED_ADDRESS__C ;;
+  }
+
+  dimension: affected_apn__c {
+    type: string
+    sql: ${TABLE}.AFFECTED_APN__C ;;
+  }
+
+  dimension: affected_county_name_del__c {
+    type: string
+    sql: ${TABLE}.AFFECTED_COUNTY_NAME_DEL__C ;;
+  }
+
+  dimension: age2__c {
+    type: number
+    sql: ${TABLE}.AGE2__C ;;
+  }
+
+  dimension: age__c {
+    type: number
+    sql: ${TABLE}.AGE__C ;;
+    label: "Age"
+  }
+
+  dimension: annual_a_o_logic__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_A_O_LOGIC__C ;;
+  }
+
+  dimension: annual_geocoding__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_GEOCODING__C ;;
+  }
+
+  dimension: annual_map_link__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_MAP_LINK__C ;;
+  }
+
+  dimension: annual_outstanding_dis__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_OUTSTANDING_DIS__C ;;
+  }
+
+  dimension: annual_radius_search__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_RADIUS_SEARCH__C ;;
+  }
+
+  dimension: annual_re_test_required__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_RE_TEST_REQUIRED__C ;;
+  }
+
+  dimension: annual_value_verification__c {
+    type: string
+    sql: ${TABLE}.ANNUAL_VALUE_VERIFICATION__C ;;
+  }
+
+  dimension: artifact__c {
+    type: string
+    sql: ${TABLE}.ARTIFACT__C ;;
+  }
+
+  dimension: assignee2__c {
+    type: string
+    sql: ${TABLE}.ASSIGNEE2__C ;;
+  }
+
+  dimension: assignee__c {
+    type: string
+    sql: ${TABLE}.ASSIGNEE__C ;;
+    label: "Assignee"
+  }
+
+  dimension_group: assignee_receipt_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ASSIGNEE_RECEIPT_DATE__C ;;
+    label:  "Assignee Receipt Date"
+  }
+
+  dimension_group: assignee_referred_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ASSIGNEE_REFERRED_DATE__C ;;
+    label: "Assignee Referred Date"
+  }
+
+  dimension: at_ticket__c {
+    type: string
+    sql: ${TABLE}.AT_TICKET__C ;;
+  }
+
+  dimension: business_priority__c {
+    type: string
+    sql: ${TABLE}.BUSINESS_PRIORITY__C ;;
+  }
+
+  dimension: capture_assignee__c {
+    type: string
+    sql: ${TABLE}.CAPTURE_ASSIGNEE__C ;;
+  }
+
+  dimension_group: capture_assignee_complete__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CAPTURE_ASSIGNEE_COMPLETE__C ;;
+  }
+
+  dimension_group: capture_assignee_pick_up_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CAPTURE_ASSIGNEE_PICK_UP_DATE__C ;;
+  }
+
+  dimension_group: capture_assignee_pickup__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CAPTURE_ASSIGNEE_PICKUP__C ;;
+  }
+
+  dimension: category__c {
+    type: string
+    sql: ${TABLE}.CATEGORY__C ;;
+  }
+
+  dimension: cause__c {
+    type: string
+    sql: ${TABLE}.CAUSE__C ;;
+  }
+
+  dimension: cbd_rps__c {
+    type: string
+    sql: ${TABLE}.CBD_RPS__C ;;
+  }
+
+  dimension: cbd_rps_issue_type__c {
+    type: string
+    sql: ${TABLE}.CBD_RPS_ISSUE_TYPE__C ;;
+  }
+
+  dimension: change_history__c {
+    type: string
+    sql: ${TABLE}.CHANGE_HISTORY__C ;;
+  }
+
+  dimension_group: close_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CLOSE_DATE__C ;;
+  }
+
+  dimension: comments10__c {
+    type: string
+    sql: ${TABLE}.COMMENTS10__C ;;
+  }
+
+  dimension: comments1__c {
+    type: string
+    sql: ${TABLE}.COMMENTS1__C ;;
+  }
+
+  dimension: comments2__c {
+    type: string
+    sql: ${TABLE}.COMMENTS2__C ;;
+  }
+
+  dimension: comments3__c {
+    type: string
+    sql: ${TABLE}.COMMENTS3__C ;;
+  }
+
+  dimension: comments4__c {
+    type: string
+    sql: ${TABLE}.COMMENTS4__C ;;
+  }
+
+  dimension: comments5__c {
+    type: string
+    sql: ${TABLE}.COMMENTS5__C ;;
+  }
+
+  dimension: comments6__c {
+    type: string
+    sql: ${TABLE}.COMMENTS6__C ;;
+  }
+
+  dimension: comments7__c {
+    type: string
+    sql: ${TABLE}.COMMENTS7__C ;;
+  }
+
+  dimension: comments8__c {
+    type: string
+    sql: ${TABLE}.COMMENTS8__C ;;
+  }
+
+  dimension: comments9__c {
+    type: string
+    sql: ${TABLE}.COMMENTS9__C ;;
+  }
+
+  dimension_group: completion_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.COMPLETION_DATE__C ;;
+    label: "Completion Date"
+  }
+
+  dimension: condition_of_icp__c {
+    type: string
+    sql: ${TABLE}.CONDITION_OF_ICP__C ;;
+  }
+
+  dimension: connectionreceivedid {
+    type: string
+    sql: ${TABLE}.CONNECTIONRECEIVEDID ;;
+  }
+
+  dimension: connectionsentid {
+    type: string
+    sql: ${TABLE}.CONNECTIONSENTID ;;
+  }
+
+  dimension: county__c {
+    type: string
+    sql: ${TABLE}.COUNTY__C ;;
+  }
+
+  dimension: county_state_fips__c {
+    type: string
+    sql: ${TABLE}.COUNTY_STATE_FIPS__C ;;
+    map_layer_name: us_counties_fips
+    label: "County, State, FIPS"
+  }
+
+  dimension: county_state_fips_scmid__c {
+    type: string
+    sql: ${TABLE}.COUNTY_STATE_FIPS_SCMID__C ;;
+    map_layer_name: us_counties_fips
+  }
+
+  dimension: createdbyid {
+    type: string
+    sql: ${TABLE}.CREATEDBYID ;;
+  }
+
+  dimension_group: createddate {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.CREATEDDATE ;;
+  }
+
+  dimension: css_assignee__c {
+    type: string
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;;
+    label: "DRR Analyst"
+  }
+
+  dimension: cts_tax_authority__c {
+    type: string
+    sql: ${TABLE}.CTS_TAX_AUTHORITY__C ;;
+  }
+
+  dimension: cts_tax_authority_name__c {
+    type: string
+    sql: ${TABLE}.CTS_TAX_AUTHORITY_NAME__C ;;
+  }
+
+  dimension: cust_follow_up_reqd__c {
+    type: string
+    sql: ${TABLE}.CUST_FOLLOW_UP_REQD__C ;;
+  }
+
+  dimension: customer_email_address__c {
+    type: string
+    sql: ${TABLE}.CUSTOMER_EMAIL_ADDRESS__C ;;
+  }
+
+  dimension: customer_name_requester__c {
+    type: string
+    sql: ${TABLE}.CUSTOMER_NAME_REQUESTER__C ;;
+    label: "Customer Requester"
+  }
+
+  dimension: customer_priority__c {
+    type: string
+    sql: ${TABLE}.CUSTOMER_PRIORITY__C ;;
+  }
+
+  dimension: customer_requester_phone__c {
+    type: string
+    sql: ${TABLE}.CUSTOMER_REQUESTER_PHONE__C ;;
+  }
+
+  dimension: data_asset_group__c {
+    type: string
+    sql: ${TABLE}.DATA_ASSET_GROUP__C ;;
+    label: "Group Originating Ticket"
+  }
+
+  dimension: data_governance_review__c {
+    type: number
+    sql: ${TABLE}.DATA_GOVERNANCE_REVIEW__C ;;
+  }
+
+  dimension: data_inquiry_assignee__c {
+    type: string
+    sql: ${TABLE}.DATA_INQUIRY_ASSIGNEE__C ;;
+  }
+
+  dimension_group: data_inquiry_assignee_complete__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DATA_INQUIRY_ASSIGNEE_COMPLETE__C ;;
+  }
+
+  dimension_group: data_inquiry_assignee_pickup__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DATA_INQUIRY_ASSIGNEE_PICKUP__C ;;
+  }
+
+  dimension: data_type__c_drill {
+    type: string
+    sql: ${TABLE}.DATA_TYPE__C;;
+
+    link: {
+      label: "expand {{value}}"
+      url: "/looks/724?f[sf_issue_management__c.data_type__c]={{value}}"
+    }
+  }
+
+  dimension: data_type__c {
+    type: string
+    sql: ${TABLE}.DATA_TYPE__C;;
+    label:  "Data Type"
+  }
+
+  dimension: database_change_required__c {
+    type: string
+    sql: ${TABLE}.DATABASE_CHANGE_REQUIRED__C ;;
+  }
+
+  dimension_group: date_assigned__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DATE_ASSIGNED__C ;;
+  }
+
+  dimension: date_edition__c {
+    type: string
+    sql: ${TABLE}.DATE_EDITION__C ;;
+  }
+
+  dimension_group: date_received_in_ftl__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DATE_RECEIVED_IN_FTL__C ;;
+  }
+
+  dimension_group: date_received_in_rdi__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DATE_RECEIVED_IN_RDI__C ;;
+  }
+
+  dimension: days_open__c {
+    type: number
+    sql: ${TABLE}.DAYS_OPEN__C ;;
+  }
+
+  dimension: days_to_assign_icp__c {
+    type: number
+    sql: ${TABLE}.DAYS_TO_ASSIGN_ICP__C ;;
+  }
+
+  dimension: days_with_drr_analyst__c {
+    type: number
+    sql: ${TABLE}.DAYS_WITH_DRR_ANALYST__C ;;
+    label: "Days With DRR Analyst"
+  }
+
+  dimension: days_with_edg_sme__c {
+    type: number
+    sql: ${TABLE}.DAYS_WITH_EDG_SME__C ;;
+    label: "Days With EDG SME"
+  }
+
+  dimension: dcs_competent_assignee__c {
+    type: string
+    sql: ${TABLE}.DCS_COMPETENT_ASSIGNEE__C ;;
+  }
+
+  dimension: defect_tracking__c {
+    type: string
+    sql: ${TABLE}.DEFECT_TRACKING__C ;;
+  }
+
+  dimension: department_initiating_inquiry__c {
+    type: string
+    sql: ${TABLE}.DEPARTMENT_INITIATING_INQUIRY__C ;;
+  }
+
+  dimension: description__c {
+    type: string
+    sql: ${TABLE}.DESCRIPTION__C ;;
+    label:  "Description"
+  }
+
+  dimension_group: di_map_completed_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DI_MAP_COMPLETED_DATE__C ;;
+  }
+
+  dimension: di_map_resolution__c {
+    type: string
+    sql: ${TABLE}.DI_MAP_RESOLUTION__C ;;
+    label: "DI/Map Resolution"
+  }
+
+  dimension: di_map_status__c {
+    type: string
+    sql: ${TABLE}.DI_MAP_STATUS__C ;;
+  }
+
+  dimension: di_process_type__c {
+    type: string
+    sql: ${TABLE}.DI_PROCESS_TYPE__C ;;
+    label: "Affected Data Asset"
+  }
+
+  dimension: direct_consumer_reported_dept__c {
+    type: string
+    sql: ${TABLE}.DIRECT_CONSUMER_REPORTED_DEPT__C ;;
+  }
+
+  dimension: doc_number__c {
+    type: string
+    sql: ${TABLE}.DOC_NUMBER__C ;;
+  }
+
+  dimension: edg_sme_assignee__c {
+    type: string
+    sql: ${TABLE}.EDG_SME_ASSIGNEE__C ;;
+    label: "EDG SME Assignee"
+  }
+
+  dimension_group: edg_sme_assignee_receipt_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EDG_SME_ASSIGNEE_RECEIPT_DATE__C ;;
+    label: "EDG SME Assignee Receipt Date"
+  }
+
+  dimension_group: edg_sme_complete__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EDG_SME_COMPLETE__C ;;
+    label: "EDG SME Complete"
+  }
+
+  dimension: edition__c {
+    type: string
+    sql: ${TABLE}.EDITION__C ;;
+  }
+
+  dimension: eds_severity__c {
+    type: string
+    sql: ${TABLE}.EDS_SEVERITY__C ;;
+  }
+
+  dimension_group: est_dt_avail_to_cust__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EST_DT_AVAIL_TO_CUST__C ;;
+  }
+
+  dimension_group: est_work_completion_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.EST_WORK_COMPLETION_DATE__C ;;
+    label:  "Initial ETA"
+  }
+
+  dimension_group: eta_current__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ETA_CURRENT__C ;;
+    label:  "Revised ETA"
+  }
+
+  dimension_group: eta_due_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ETA_DUE_DATE__C ;;
+    label: "ETA Due Date"
+  }
+
+  dimension_group: eta_provided__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ETA_PROVIDED__C ;;
+    label: "ETA Provided"
+  }
+
+  dimension: fare_issue_type__c {
+    type: string
+    sql: ${TABLE}.FARE_ISSUE_TYPE__C ;;
+  }
+
+  dimension: fiona_reason__c {
+    type: string
+    sql: ${TABLE}.FIONA_REASON__C ;;
+  }
+
+  dimension: fips__c {
+    type: string
+    sql: ${TABLE}.FIPS__C ;;
+    map_layer_name: us_counties_fips
+    label: "FIPS Code"
+  }
+
+  dimension: found_in_version__c {
+    type: string
+    sql: ${TABLE}.FOUND_IN_VERSION__C ;;
+  }
+
+  dimension: global_issue__c {
+    type: string
+    sql: ${TABLE}.GLOBAL_ISSUE__C ;;
+  }
+
+  dimension: icp_closing_analyst__c {
+    type: string
+    sql: ${TABLE}.ICP_CLOSING_ANALYST__C ;;
+  }
+
+  dimension_group: icp_fix_sent_1__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ICP_FIX_SENT_1__C ;;
+  }
+
+  dimension_group: icp_fix_sent_2__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ICP_FIX_SENT_2__C ;;
+  }
+
+  dimension: icp_resolution__c {
+    type: string
+    sql: ${TABLE}.ICP_RESOLUTION__C ;;
+  }
+
+  dimension: icp_sort__c {
+    type: number
+    sql: ${TABLE}.ICP_SORT__C ;;
+  }
+
+  dimension: icp_status__c {
+    type: string
+    sql: ${TABLE}.ICP_STATUS__C ;;
+  }
+
+  dimension_group: icp_submit_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ICP_SUBMIT_DATE__C ;;
+  }
+
+  dimension_group: implementation_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.IMPLEMENTATION_DATE__C ;;
+  }
+
+  dimension_group: initial_cust_response__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.INITIAL_CUST_RESPONSE__C ;;
+  }
+
+  dimension: isdeleted {
+    type: number
+    sql: ${TABLE}.ISDELETED ;;
+  }
+
+  dimension: issue__c {
+    type: string
+    sql: ${TABLE}.ISSUE__C ;;
+  }
+
+  dimension: issue_management_production_id__c {
+    type: string
+    sql: ${TABLE}.ISSUE_MANAGEMENT_PRODUCTION_ID__C ;;
+  }
+
+  dimension: issue_type__c {
+    type: string
+    sql: ${TABLE}.ISSUE_TYPE__C ;;
+    label: "Issue Type"
+  }
+
+  dimension: keyed_transactions_avail__c {
+    type: string
+    sql: ${TABLE}.KEYED_TRANSACTIONS_AVAIL__C ;;
+  }
+
+  dimension_group: lastactivitydate {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.LASTACTIVITYDATE ;;
+  }
+
+  dimension: lastmodifiedbyid {
+    type: string
+    sql: ${TABLE}.LASTMODIFIEDBYID ;;
+  }
+
+  dimension_group: lastmodifieddate {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.LASTMODIFIEDDATE ;;
+  }
+
+  dimension_group: lastreferenceddate {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.LASTREFERENCEDDATE ;;
+  }
+
+  dimension_group: lastvieweddate {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.LASTVIEWEDDATE ;;
+  }
+
+  dimension: legal_review_completed__c {
+    type: number
+    sql: ${TABLE}.LEGAL_REVIEW_COMPLETED__C ;;
+  }
+
+  dimension: legal_review_needed__c {
+    type: number
+    sql: ${TABLE}.LEGAL_REVIEW_NEEDED__C ;;
+  }
+
+  dimension: media_type__c {
+    type: string
+    sql: ${TABLE}.MEDIA_TYPE__C ;;
+  }
+
+  dimension_group: metro_scan_cd_completion_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.METRO_SCAN_CD_COMPLETION_DATE__C ;;
+  }
+
+  dimension_group: metro_scan_ol_completion_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.METRO_SCAN_OL_COMPLETION_DATE__C ;;
+  }
+
+  dimension: metro_scan_reply__c {
+    type: string
+    sql: ${TABLE}.METRO_SCAN_REPLY__C ;;
+  }
+
+  dimension: metroscan_on_line_only_county__c {
+    type: string
+    sql: ${TABLE}.METROSCAN_ON_LINE_ONLY_COUNTY__C ;;
+  }
+
+  dimension: metroscan_status__c {
+    type: string
+    sql: ${TABLE}.METROSCAN_STATUS__C ;;
+  }
+
+  dimension: mgr_spvsr__c {
+    type: string
+    sql: ${TABLE}.MGR_SPVSR__C ;;
+  }
+
+  dimension: mls_abbrev__c {
+    type: string
+    sql: ${TABLE}.MLS_ABBREV__C ;;
+  }
+
+  dimension_group: mls_completed_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.MLS_COMPLETED_DATE__C ;;
+  }
+
+  dimension: mls_id__c {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.MLS_ID__C ;;
+  }
+
+  dimension: mls_listing_id__c {
+    type: string
+    sql: ${TABLE}.MLS_LISTING_ID__C ;;
+  }
+
+  dimension_group: more_info_requested_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.MORE_INFO_REQUESTED_DATE__C ;;
+  }
+
+  dimension: ms_assignee__c {
+    type: string
+    sql: ${TABLE}.MS_ASSIGNEE__C ;;
+  }
+
+  dimension_group: ms_avail_to_cd_eta__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.MS_AVAIL_TO_CD_ETA__C ;;
+  }
+
+  dimension_group: ms_avail_to_ol_eta__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.MS_AVAIL_TO_OL_ETA__C ;;
+  }
+
+  dimension: ms_issue_type__c {
+    type: string
+    sql: ${TABLE}.MS_ISSUE_TYPE__C ;;
+  }
+
+  dimension_group: msol_resolution_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.MSOL_RESOLUTION_DATE__C ;;
+  }
+
+  dimension: ICP_number{
+    type: string
+    sql: ${TABLE}.NAME ;;
+    label: "ICP Number"
+  }
+
+  dimension: non_gd_related__c {
+    type: string
+    sql: ${TABLE}.NON_GD_RELATED__C ;;
+  }
+
+  dimension: num_parcels_affected__c {
+    type: number
+    sql: ${TABLE}.NUM_PARCELS_AFFECTED__C ;;
+  }
+
+  dimension: offshore_analyst__c {
+    type: string
+    sql: ${TABLE}.OFFSHORE_ANALYST__C ;;
+    label: "Offshore Analyst"
+  }
+
+  dimension_group: offshore_assignee_complete_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.OFFSHORE_ASSIGNEE_COMPLETE_DATE__C ;;
+    label: "Offshore Assignee Complete Date"
+  }
+
+  dimension_group: offshore_assignee_receipt_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.OFFSHORE_ASSIGNEE_RECEIPT_DATE__C ;;
+    label: "Offshore Assignee Receipt Date"
+  }
+
+  dimension_group: original_qc_picked_up_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.ORIGINAL_QC_PICKED_UP_DATE__C ;;
+  }
+
+  dimension: owner__c {
+    type: string
+    sql: ${TABLE}.OWNER__C ;;
+  }
+
+  dimension_group: owner_thru_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.OWNER_THRU_DATE__C ;;
+  }
+
+  dimension: ownerid {
+    type: string
+    sql: ${TABLE}.OWNERID ;;
+  }
+
+  dimension: primary_contact__c {
+    type: string
+    sql: ${TABLE}.PRIMARY_CONTACT__C ;;
+  }
+
+  dimension: primary_contact_phone__c {
+    type: string
+    sql: ${TABLE}.PRIMARY_CONTACT_PHONE__C ;;
+  }
+
+  dimension: priority__c {
+    type: string
+    sql: ${TABLE}.PRIORITY__C ;;
+    label: "Customer Priority"
+  }
+
+  dimension: priority_rank__c {
+    type: string
+    sql: ${TABLE}.PRIORITY_RANK__C ;;
+  }
+
+  dimension: problem_type__c {
+    type: string
+    sql: ${TABLE}.PROBLEM_TYPE__C ;;
+    label: "Root Cause"
+  }
+
+  dimension: processing_format__c {
+    type: string
+    sql: ${TABLE}.PROCESSING_FORMAT__C ;;
+  }
+
+  dimension: product_affected__c {
+    type: string
+    sql: ${TABLE}.PRODUCT_AFFECTED__C ;;
+    label: "Product Affected "
+  }
+
+  dimension: qa_analyst__c {
+    type: string
+    sql: ${TABLE}.QA_ANALYST__C ;;
+  }
+
+  dimension: qc_error__c {
+    type: string
+    sql: ${TABLE}.QC_ERROR__C ;;
+  }
+
+  dimension: qc_retest__c {
+    type: string
+    sql: ${TABLE}.QC_RETEST__C ;;
+  }
+
+  dimension_group: ready_for_retest_1__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.READY_FOR_RETEST_1__C ;;
+  }
+
+  dimension_group: ready_for_retest_2__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.READY_FOR_RETEST_2__C ;;
+  }
+
+  dimension_group: ready_for_retest_3__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.READY_FOR_RETEST_3__C ;;
+  }
+
+  dimension_group: ready_for_retest_4__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.READY_FOR_RETEST_4__C ;;
+  }
+
+  dimension_group: ready_for_retest_5__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.READY_FOR_RETEST_5__C ;;
+  }
+
+  dimension: realist_representative_formula__c {
+    type: string
+    sql: ${TABLE}.REALIST_REPRESENTATIVE_FORMULA__C ;;
+  }
+
+  dimension: realtytrac__c {
+    type: number
+    sql: ${TABLE}.REALTYTRAC__C ;;
+  }
+
+  dimension: record_count_affected__c {
+    type: number
+    sql: ${TABLE}.RECORD_COUNT_AFFECTED__C ;;
+  }
+
+  dimension_group: referred_to_rdi_1__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REFERRED_TO_RDI_1__C ;;
+  }
+
+  dimension_group: referred_to_rdi_2__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REFERRED_TO_RDI_2__C ;;
+  }
+
+  dimension_group: referred_to_rdi_3__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REFERRED_TO_RDI_3__C ;;
+  }
+
+  dimension_group: referred_to_rdi_4__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REFERRED_TO_RDI_4__C ;;
+  }
+
+  dimension_group: referred_to_rdi_5__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REFERRED_TO_RDI_5__C ;;
+  }
+
+  dimension: regular_qc_analyst__c {
+    type: string
+    sql: ${TABLE}.REGULAR_QC_ANALYST__C ;;
+  }
+
+  dimension: related_icp__c {
+    type: string
+    sql: ${TABLE}.RELATED_ICP__C ;;
+  }
+
+  dimension: released_in_version__c {
+    type: string
+    sql: ${TABLE}.RELEASED_IN_VERSION__C ;;
+  }
+
+  dimension: remediation_timeline__c {
+    type: string
+    sql: ${TABLE}.REMEDIATION_TIMELINE__C ;;
+  }
+
+  dimension: reported_by__c {
+    type: string
+    sql: ${TABLE}.REPORTED_BY__C ;;
+  }
+
+  dimension_group: reported_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.REPORTED_DATE__C ;;
+  }
+
+  dimension: resolution__c {
+    type: string
+    sql: ${TABLE}.RESOLUTION__C ;;
+  }
+
+  dimension: resolutions__c {
+    type: string
+    sql: ${TABLE}.RESOLUTIONS__C ;;
+  }
+
+  dimension: sa_qc_analyst__c {
+    type: string
+    sql: ${TABLE}.SA_QC_ANALYST__C ;;
+  }
+
+  dimension: sales_rep_name__c {
+    type: string
+    sql: ${TABLE}.SALES_REP_NAME__C ;;
+  }
+
+  dimension: samples_attached__c {
+    type: string
+    sql: ${TABLE}.SAMPLES_ATTACHED__C ;;
+  }
+
+  dimension: scmid__c {
+    type: string
+    sql: ${TABLE}.SCMID__C ;;
+  }
+
+  dimension: scope__c {
+    type: number
+    sql: ${TABLE}.SCOPE__C ;;
+    label: "Scope"
+  }
+
+  dimension: scope_explanation__c {
+    type: string
+    sql: ${TABLE}.SCOPE_EXPLANATION__C ;;
+    label: "Scope Explanation"
+  }
+
+  dimension: severity__c {
+    type: string
+    sql: ${TABLE}.SEVERITY__C ;;
+  }
+
+  dimension: sme_team__c {
+    type: string
+    sql: ${TABLE}.SME_TEAM__C ;;
+    label: "SME Team"
+  }
+
+  dimension_group: sr_commit_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SR_COMMIT_DATE__C ;;
+  }
+
+  dimension: sr_ticket__c {
+    type: string
+    sql: ${TABLE}.SR_TICKET__C ;;
+  }
+
+  dimension: state__c {
+    type: string
+    sql: ${TABLE}.STATE__C ;;
+    map_layer_name: us_states
+  }
+
+  dimension: status__c {
+    type: string
+    sql: ${TABLE}.STATUS__C ;;
+    label: "Status"
+  }
+
+  dimension: sub_systems__c {
+    type: string
+    sql: ${TABLE}.SUB_SYSTEMS__C ;;
+  }
+
+  dimension_group: submit_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+
+    ]
+    sql: ${TABLE}.SUBMIT_DATE__C ;;
+    label: "Submit Date"
+  }
+
+  dimension: submitter__c {
+    type: string
+    sql: ${TABLE}.SUBMITTER__C ;;
+  }
+
+  dimension: submittied_via__c {
+    type: string
+    sql: ${TABLE}.SUBMITTIED_VIA__C ;;
+  }
+
+  dimension: swat_analysts__c {
+    type: string
+    sql: ${TABLE}.SWAT_ANALYSTS__C ;;
+  }
+
+  dimension: swat_application__c {
+    type: string
+    sql: ${TABLE}.SWAT_APPLICATION__C ;;
+  }
+
+  dimension: swat_business_area__c {
+    type: string
+    sql: ${TABLE}.SWAT_BUSINESS_AREA__C ;;
+  }
+
+  dimension: swat_chronic__c {
+    type: string
+    sql: ${TABLE}.SWAT_CHRONIC__C ;;
+  }
+
+  dimension: swat_chronic_reference__c {
+    type: string
+    sql: ${TABLE}.SWAT_CHRONIC_REFERENCE__C ;;
+  }
+
+  dimension: swat_comments__c {
+    type: string
+    sql: ${TABLE}.SWAT_COMMENTS__C ;;
+  }
+
+  dimension: swat_frequency_of_outage__c {
+    type: string
+    sql: ${TABLE}.SWAT_FREQUENCY_OF_OUTAGE__C ;;
+  }
+
+  dimension_group: swat_implementation_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SWAT_IMPLEMENTATION_DATE__C ;;
+  }
+
+  dimension: swat_minutes_of_outage__c {
+    type: number
+    sql: ${TABLE}.SWAT_MINUTES_OF_OUTAGE__C ;;
+  }
+
+  dimension_group: swat_notified_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SWAT_NOTIFIED_DATE__C ;;
+  }
+
+  dimension: swat_reported_by__c {
+    type: string
+    sql: ${TABLE}.SWAT_REPORTED_BY__C ;;
+  }
+
+  dimension: swat_resolved__c {
+    type: string
+    sql: ${TABLE}.SWAT_RESOLVED__C ;;
+  }
+
+  dimension_group: swat_resolved_date__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SWAT_RESOLVED_DATE__C ;;
+  }
+
+  dimension: swat_root_cause_primary__c {
+    type: string
+    sql: ${TABLE}.SWAT_ROOT_CAUSE_PRIMARY__C ;;
+  }
+
+  dimension: swat_root_cause_secondary__c {
+    type: string
+    sql: ${TABLE}.SWAT_ROOT_CAUSE_SECONDARY__C ;;
+  }
+
+  dimension: swat_root_cause_summary__c {
+    type: string
+    sql: ${TABLE}.SWAT_ROOT_CAUSE_SUMMARY__C ;;
+  }
+
+  dimension: swat_severity__c {
+    type: string
+    sql: ${TABLE}.SWAT_SEVERITY__C ;;
+  }
+
+  dimension: swat_status__c {
+    type: string
+    sql: ${TABLE}.SWAT_STATUS__C ;;
+  }
+
+  dimension: swat_subsystem__c {
+    type: string
+    sql: ${TABLE}.SWAT_SUBSYSTEM__C ;;
+  }
+
+  dimension_group: systemmodstamp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SYSTEMMODSTAMP ;;
+  }
+
+  dimension: tdo_tax_data_operation__c {
+    type: string
+    sql: ${TABLE}.TDO_TAX_DATA_OPERATION__C ;;
+  }
+
+  dimension: tech_support_assigned__c {
+    type: string
+    sql: ${TABLE}.TECH_SUPPORT_ASSIGNED__C ;;
+  }
+
+  dimension: tech_support_summary__c {
+    type: string
+    sql: ${TABLE}.TECH_SUPPORT_SUMMARY__C ;;
+  }
+
+  dimension: tier__c {
+    type: string
+    sql: ${TABLE}.TIER__C ;;
+  }
+
+  dimension: time_expended__c {
+    type: string
+    sql: ${TABLE}.TIME_EXPENDED__C ;;
+  }
+
+  dimension: title__c {
+    type: string
+    sql: ${TABLE}.TITLE__C ;;
+  }
+
+  dimension: total_cnty_parcel_count__c {
+    type: number
+    sql: ${TABLE}.TOTAL_CNTY_PARCEL_COUNT__C ;;
+  }
+
+  dimension: total_days_open__c {
+    type: number
+    sql: ${TABLE}.TOTAL_DAYS_OPEN__C ;;
+    label: "Total Days Open"
+  }
+
+  dimension: transferred_to_alm__c {
+    type: string
+    sql: ${TABLE}.TRANSFERRED_TO_ALM__C ;;
+  }
+
+  dimension_group: triage_eta__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.TRIAGE_ETA__C ;;
+  }
+
+  dimension: type_of_inquiry__c {
+    type: string
+    sql: ${TABLE}.TYPE_OF_INQUIRY__C ;;
+  }
+
+  dimension: version__c {
+    type: string
+    sql: ${TABLE}.VERSION__C ;;
+  }
+
+  dimension: viper_error__c {
+    type: string
+    sql: ${TABLE}.VIPER_ERROR__C ;;
+  }
+
+  dimension: viper_error_category__c {
+    type: string
+    sql: ${TABLE}.VIPER_ERROR_CATEGORY__C ;;
+  }
+
+  dimension: viper_error_type__c {
+    type: string
+    sql: ${TABLE}.VIPER_ERROR_TYPE__C ;;
+  }
+
+  dimension: vqr_analyst__c {
+    type: string
+    sql: ${TABLE}.VQR_ANALYST__C ;;
+  }
+
+  dimension: complexity_level__c {
+    type: string
+    sql: ${TABLE}.COMPLEXITY_LEVEL__C ;;
+  }
+
+  dimension: 3rd_party_vendor__c {
+    type: string
+    sql: ${TABLE}.X3RD_PARTY_VENDOR__C ;;
+    label: "3rd Party Vendor"
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [id, ICP_number]
+  }
+#example
+  measure: data_type_count {
+    type:  count
+    drill_fields: [data_asset_group__c, assignee__c, submit_date__c_date]
+  }
+  measure: data_asset_group_count {
+    type:  count
+    drill_fields: [id, ICP_number, data_type__c, assignee__c, submit_date__c_date]
+  }
+
+  #Metric 2
+  measure: status_count {
+  type:  count
+  drill_fields: [id, ICP_number,assignee__c]
+  }
+
+
+  #-----Metric 1/Resolution Type/tickets submitted by DI/Map Resolution----
+
+  #count with drill table
+  measure: di_map_resolution_count {
+    type: count
+    drill_fields: [id, ICP_number, county_state_fips__c, data_asset_group__c, di_map_resolution__c]
+
+  }
+
+
+  #calls DI_MAP_RESOLUTION__C from the table, provides visual drills on mouse click
+  dimension: di_map_resolution_drill {
+    type: string
+    sql: CASE WHEN ${TABLE}.DI_MAP_RESOLUTION__C IS NULL THEN 'ø' ELSE ${TABLE}.DI_MAP_RESOLUTION__C END;;
+    link: {
+      #passes through DI/Map Resolution and date as a filter to a dashboard showing Group Originating Ticket
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/165?DI%2FMap%20Resolution={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+
+    link: {
+      #passes through DI/Map Resolution and date as a filter to a dashboard showing County & FIPS
+      label: "Explore '{{value}}' by County & Fips"
+      url: "/dashboards/169?DI%2FMap%20Resolution={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+      #passes through DI/Map Resolution and date as a filter to a dashboard showing DRR Assignee/Analyst
+      label: "Explore '{{value}}' by DRR Analyst"
+      url: "/dashboards/227?DI%2FMap%20Resolution={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+      }
+  }
+
+  #double drill dimension based off dashboard: Tickets Submitted by DI/Map Resolutio nand Group Originating Ticket
+  #calls DATA_ASSET_GROUP__C from the table, provides visual drills on mouse click
+  dimension: data_asset_group_drill_metric_1  {
+    type:  string
+    sql: CASE WHEN ${TABLE}.DATA_ASSET_GROUP__C IS NULL THEN 'ø' ELSE ${TABLE}.DATA_ASSET_GROUP__C END;;
+    #passes through Group originating ticket and date as a filter to a dashboard showing FIPS
+    link: {
+      label: "Explore '{{value}}' by FIPS"
+      url: "/dashboards/181?Group%20Originating%20Ticket={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}&DI%20Map%2FResolution={{_filters['sf_issue_management__c.di_map_resolution_drill'] | url_encode }}"
+      }
+
+  }
+
+
+#-----Metric 2/No ETA Provided ICPs/Tickets Past Due----
+
+
+#calls specific values within BUSINESS_PRIORITY__C and added a specific amount of days per business priority and stores into another dimension
+#calculation excludes weekends
+#Urgent requires 2 days to refer out a ticket
+#High requres 4 days to refer out a ticket
+#medium requres 7 days to refer out a ticket
+#all else require 10 days
+dimension: expected_eta_due_date {
+  type: date
+  sql: CASE
+            WHEN [BUSINESS_PRIORITY__C] = '1. Urgent' THEN DATEADD(DAY,(2/5)*7+(2%5)+(CASE WHEN ((2%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) IN (7,1,8) OR
+                                                ((2%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) < (2%5) THEN 2 ELSE 0 END),[ASSIGNEE_RECEIPT_DATE__C])
+            WHEN [BUSINESS_PRIORITY__C] = '2. High' THEN DATEADD(DAY,(4/5)*7+(4%5)+(CASE WHEN ((4%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) IN (7,1,8) OR
+                                                ((4%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) < (4%5) THEN 2 ELSE 0 END),[ASSIGNEE_RECEIPT_DATE__C])
+            WHEN [BUSINESS_PRIORITY__C] = '3. Medium' THEN DATEADD(DAY,(7/5)*7+(7%5)+(CASE WHEN ((7%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) IN (7,1,8) OR
+                                                ((7%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) < (7%5) THEN 2 ELSE 0 END),[ASSIGNEE_RECEIPT_DATE__C])
+            ELSE DATEADD(DAY,(10/5)*7+(10%5)+(CASE WHEN ((10%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) IN (7,1,8) OR
+                                                ((10%5) + DATEPART(dw, ASSIGNEE_RECEIPT_DATE__C)%7) < (10%5) THEN 2 ELSE 0 END),[ASSIGNEE_RECEIPT_DATE__C])
+        END
+  ;;
+}
+
+  #used as a filter if the user wants to add an assignee filter
+  dimension: assignee_filter_suggest {
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;;
+    suggest_dimension: css_assignee__c
+
+  }
+
+#-----Metric 3/Critical Missing Fields----
+
+
+
+#every measure set up here sums how many null values there are historically
+#adds one every time an ICP has a null field in this column
+
+
+#metric 3 null fields
+  measure: null_1 {
+    type: sum
+    sql: case when ${TABLE}.ANNUAL_RE_TEST_REQUIRED__C is null then 1 else 0 end ;;
+    label: "Annual Re Test Required Nulls"
+    filters: {
+      field:  annual_re_test_required__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_2 {
+    type: sum
+    sql: case when ${TABLE}.ASSIGNEE_RECEIPT_DATE__C is null then 1 else 0 end ;;
+    label: "Assignee Receipt Date Nulls"
+    filters: {
+      field:  assignee_receipt_date__c_date
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_3 {
+    type: sum
+    sql: case when ${TABLE}.ASSIGNEE_REFERRED_DATE__C is null then 1 else 0 end ;;
+    label: "Assignee Referred Date Nulls"
+    filters: {
+      field:  assignee_referred_date__c_date
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_4 {
+    type: sum
+    sql: case when ${TABLE}.COMPLETION_DATE__C is null then 1 else 0 end ;;
+    label: "Completion Date Nulls"
+    filters: {
+      field:  completion_date__c_date
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_5 {
+    type: sum
+    sql: case when ${TABLE}.DATA_ASSET_GROUP__C is null then 1 else 0 end ;;
+    label: "Group Originating Ticket Nulls"
+    filters: {
+      field:  data_asset_group__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_6 {
+    type: sum
+    sql: case when ${TABLE}.DATA_TYPE__C is null then 1 else 0 end ;;
+    label: "Data Type Nulls"
+    filters: {
+      field:  data_type__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_7 {
+    type: sum
+    sql: case when ${TABLE}.DI_MAP_RESOLUTION__C is null then 1 else 0 end ;;
+    label: "DI/Map Resolution Nulls"
+    filters: {
+      field:  di_map_resolution__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_8 {
+    type: sum
+    sql: case when ${TABLE}.DI_PROCESS_TYPE__C is null then 1 else 0 end ;;
+    label: "Affected Data Asset Nulls"
+    filters: {
+      field:  di_process_type__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_9 {
+    type: sum
+    sql: case when ${TABLE}.ISSUE_TYPE__C is null then 1 else 0 end ;;
+    label: "Issue Type Nulls"
+    filters: {
+      field:  issue_type__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_10 {
+    type: sum
+    sql: case when ${TABLE}.PROBLEM_TYPE__C is null then 1 else 0 end ;;
+    label: "Root Cause Nulls"
+    filters: {
+      field:  problem_type__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_11 {
+    type: sum
+    sql: case when ${TABLE}.PRODUCT_AFFECTED__C is null then 1 else 0 end ;;
+    label: "Product Affected Nulls"
+    filters: {
+      field:  product_affected__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_12 {
+    type: sum
+    sql: case when ${TABLE}.ICP_CLOSING_ANALYST__C is null then 1 else 0 end ;;
+    label: "ICP Closing Analyst Nulls"
+    filters: {
+      field:  icp_closing_analyst__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_13 {
+    type: sum
+    sql: case when ${TABLE}.ISSUE__C is null then 1 else 0 end ;;
+    label: "Issue Summary Nulls"
+    filters: {
+      field:  issue__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_14 {
+    type: sum
+    sql: case when ${TABLE}.RESOLUTIONS__C is null then 1 else 0 end ;;
+    label: "Resolution Plan Nulls"
+    filters: {
+      field:  resolutions__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_15 {
+    type: sum
+    sql: case when ${TABLE}.REMEDIATION_TIMELINE__C is null then 1 else 0 end ;;
+    label: "Remediation Timeline Nulls"
+    filters: {
+      field:  remediation_timeline__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_16 {
+    type: sum
+    sql: case when ${TABLE}.SCOPE__C is null then 1 else 0 end ;;
+    label: "Scope Nulls"
+    filters: {
+      field:  scope__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_17 {
+    type: sum
+    sql: case when ${TABLE}.SCOPE_EXPLANATION__C is null then 1 else 0 end ;;
+    label: "Scope Explanation Nulls"
+    filters: {
+      field:  scope_explanation__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_18 {
+    type: sum
+    sql: case when ${TABLE}.BUSINESS_PRIORITY__C is null then 1 else 0 end ;;
+    label:  "Business Priority Nulls"
+    filters: {
+      field:  business_priority__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_19 {
+    type: sum
+    sql: case when ${TABLE}.ETA_DUE_DATE__C is null then 1 else 0 end ;;
+    label: "ETA Due Date Nulls"
+    filters: {
+      field:  eta_due_date__c_date
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  measure: null_20 {
+    type: sum
+    sql: case when ${TABLE}.COMPLEXITY_LEVEL__C is null then 1 else 0 end ;;
+    label: "Complexity Level Nulls"
+    filters: {
+      field:  complexity_level__c
+      value: "null"
+    }
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+
+  #sums up all the instances of null values into one measure
+  #adds drill fields
+  measure: total_null {
+    type: number
+    sql: ${null_1} + ${null_2} + ${null_3} + ${null_4} + ${null_5} +
+          ${null_6} + ${null_7} + ${null_8} + ${null_9} + ${null_10} +
+            ${null_11} + ${null_12} + ${null_13} + ${null_14} + ${null_15}
+            + ${null_16} + ${null_17} + ${null_18} + ${null_19} + ${null_20};;
+    drill_fields: [id, ICP_number, completion_date__c_date]
+  }
+
+  #calls CSS_ASSIGNEE__C from the table, provides visual drills on mouse click
+  dimension: drr_assignee_critical_missing_fields{
+    type: string
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;; #DRR analyst
+    #passes through DRR Analyst and date as a filter to a dashboard showing Critical Missing Fields Over Time
+    link: {
+      label: "Explore '{{value}}' by Critical Missing Fields Over Time"
+      url: "/dashboards/224?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.completion_date__c_date'] | url_encode }}"
+    }
+    #passes through DRR Analyst and date as a filter to a dashboard showing Critical Missing Fields Per IC
+    link: {
+      label: "Explore '{{value}}' by Critical Missing Fields Per ICP"
+      url: "/dashboards/229?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.completion_date__c_date'] | url_encode }}"
+    }
+
+  }
+
+#-----No Drills for Metric 3/Critical Missing Fields Trends----
+#see total_null
+
+
+
+  #-----Metric 4/common reported issues/tickets submitted by county----
+
+
+  #count with drill table
+  measure: submitted_by_fips {
+    type: count
+    drill_fields: [id, ICP_number, submit_date__c_date, data_type__c, di_process_type__c]
+
+}
+#calls FIPS__C from the table, provides visual drills on mouse click
+  dimension: fips_drill {
+    type: string
+    sql: ${TABLE}.FIPS__C;;
+    map_layer_name: us_counties_fips
+    #passes through FIPS and date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label: "Explore FIPS #{{value}} by Group Originating Ticket"
+      url: "/dashboards/230?FIPS={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through FIPS and date as a filter to a dashboard showing Data Type
+    link: {
+      label: "Explore FIPS #{{value}} by Data Type"
+      url: "/dashboards/162?FIPS={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+
+    #passes through FIPS and date as a filter to a dashboard showing Affected Data Asset
+    link: {
+      label: "Explore FIPS #{{value}} by Affected Data Asset"
+      url: "/dashboards/163?FIPS={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+  #double drill dimension based off dashboard: Tickets Submitted by County and Group Originating Tickets
+  #calls DATA_ASSET_GROUP__C (Group Originating Ticket)from the table, provides visual drills on mouse click
+  dimension: data_asset_group_common_reported_issues {
+    type: string
+    sql: CASE WHEN ${TABLE}.DATA_ASSET_GROUP__C IS NULL THEN 'ø' ELSE ${TABLE}.DATA_ASSET_GROUP__C END;;
+    #passes through group originating ticket, date, and fips as a filter to a dashboard showing Data Type
+    link: {
+      label: "Explore '{{value}}' by Data Type"
+      url: "/dashboards/277?Group%20Originating%20Ticket={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}&FIPS={{_filters['sf_issue_management__c.fips__c'] | url_encode }}"
+    }
+  }
+
+  #double drill dimension based off dashboard: Tickets Submitted by County and Data Type
+  #calls DATA_TYPE__C from the table, provides visual drills on mouse click
+  dimension: data_type_common_reported_issues {
+    type: string
+    sql: ${TABLE}.DATA_TYPE__C ;;
+    #passes through data type, date, and fips as a filter to a dashboard showing Root Cause
+    link: {
+      label: "Explore '{{value}}' by Root Cause"
+      url: "/dashboards/200?Data%20Type={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}&FIPS={{_filters['sf_issue_management__c.fips_drill'] | url_encode }}"
+    }
+  }
+
+
+
+
+
+   #-----Metric 5/contact resolution/tickets submitted by SME Team----
+
+
+
+#calls SME_TEAM__C from the table, provides visual drills on mouse click
+  dimension: SME_team_metric_5{
+    type:  string
+    sql: CASE WHEN ${TABLE}.SME_TEAM__C IS NULL THEN 'ø' ELSE ${TABLE}.SME_TEAM__C END;;
+    link: {
+      #passes through sme team and date as a filter to a dashboard showing each DRR Analyst
+      label:  "Explore '{{value}}' by DRR Analyst"
+      url: "/dashboards/191?SME%20Team={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through sme team and date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label:  "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/243?SME%20Team={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through sme team and date as a filter to a dashboard showing EDG SME Assignee
+    link: {
+      label: "Explore '{{value}}' by EDG SME Assignee"
+      url: "/dashboards/194?SME%20Team={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+  #count with drill table
+  measure: contact_resolution_count {
+    type: count
+    drill_fields: [id, ICP_number, css_assignee__c, sme_team__c, data_asset_group__c, edg_sme_assignee__c, est_work_completion_date__c_date, eta_current__c_date]
+  }
+
+
+
+  #-----Metric 6 has been removed----
+
+
+
+
+
+  #-----Metric 7/Research In-Progress ICPs/Assigned Tickets----
+
+
+
+
+  #count with drill tables, no need for visual/custom drilling here
+  measure:  open_tickets {
+    type:  count
+    drill_fields: [id, ICP_number, submit_date__c_date, status__c, assignee__c, css_assignee__c, data_asset_group__c,
+                  di_map_resolution__c, age__c, total_days_open__c ,sme_team__c, 3rd_party_vendor__c,
+                  edg_sme_assignee__c, edg_sme_assignee_receipt_date__c_date, edg_sme_complete__c_date,
+                  eta_due_date__c_date, eta_provided__c_date, est_work_completion_date__c_date, eta_current__c_date,
+                  customer_name_requester__c]
+    label: "ICP Count"
+  }
+
+
+
+
+
+  #-----Metric 8/product affected metrics/tickets submitted by product affected----
+
+
+
+
+  #count with drills
+  measure:  product_affected_count{
+    type:  count
+    drill_fields: [id, ICP_number, product_affected__c, data_asset_group__c]
+  }
+
+  #calls Product Affected from the table, provides visual drills on mouse click
+  dimension: product_affected_drill_8 {
+    type: string
+    sql:  CASE WHEN ${TABLE}.PRODUCT_AFFECTED__C IS NULL THEN 'ø' ELSE ${TABLE}.PRODUCT_AFFECTED__C END;;
+    #passes through product affected and date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/233?Product%20Affected={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+
+
+
+  #-----Metric 9/high scope impact metrics/tickets submitted by business priority----
+
+
+
+  #count with drill table
+  measure: business_priority_count {
+    type: count
+    drill_fields: [id, ICP_number, business_priority__c, county_state_fips__c, di_process_type__c, scope__c, scope_explanation__c]
+
+  }
+
+  #calls BUSINESS_PRIORITY__C from the table, provides visual drills on mouse click
+  dimension: business_priority_drill {
+    type: string
+    sql: CASE WHEN ${TABLE}.BUSINESS_PRIORITY__C IS NULL THEN 'ø' ELSE ${TABLE}.BUSINESS_PRIORITY__C END;;
+    #passes through business priority and date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label: "Explore '{{value}} Priority' by Group Originating Ticket"
+      url: "/dashboards/234?Business%20Priority={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through business priority and date as a filter to a dashboard showing FIPS/Map
+    link: {
+      label: "Explore '{{value}} Priority' by FIPS"
+      url: "/dashboards/172?Business%20Priority={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through business priority and date as a filter to a dashboard showing Affected Data Asset
+    link: {
+      label: "Explore '{{value}} Priority' by Affected Data Asset"
+      url: "/dashboards/173?Business%20Priority={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+
+
+
+  #-----Metric 10/customers submitted issues/tickets submitted by customers----
+
+
+
+  #count with drill table
+  measure: number_of_requests {
+    type:  count
+    drill_fields: [id, ICP_number, customer_name_requester__c, submit_date__c_date, county_state_fips__c]
+
+  }
+
+  #calls CUSTOMER_NAME_REQUESTER_C from the table, provides visual drills on mouse click
+  dimension: customer_name_requester {
+    type:  string
+    sql:  ${TABLE}.CUSTOMER_NAME_REQUESTER__C ;;
+    #passes through customer name requester and date as a filter to a dashboard showing County and FIPS
+    link: {
+      label: "Explore '{{value}}' by County & FIPS"
+      url: "/dashboards/225?Customer%20Requester={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through customer name requester and date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/244?Customer%20Requester={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through customer name requester and date as a filter to a dashboard showing Data Type
+    link: {
+      label: "Explore '{{value}}' by Data Type"
+      url: "/dashboards/226?Customer%20Requester={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+
+
+
+  #-----Metric 11/customer service group metrics/tickets submitted by group originating ticket----
+
+
+
+  #calls DATA_ASSET_GROUP__C from the table, provides visual drills on mouse click
+  dimension: data_asset_group_drill  {
+    type: string
+    sql: CASE WHEN ${TABLE}.DATA_ASSET_GROUP__C IS NULL THEN 'ø' ELSE ${TABLE}.DATA_ASSET_GROUP__C END ;;
+    #passes through Group originating ticket and date as a filter to a dashboard showing Data Tyoe
+    link: {
+      label: "Explore '{{value}}' by Data Type"
+      url: "/dashboards/205?Group%20Originating%20Ticket={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+  #count with drill table
+  measure: customer_service_group_metrics_count {
+    type: count
+    drill_fields: [id, ICP_number, submit_date__c_date, data_asset_group__c, data_type__c]
+  }
+
+
+
+
+#-----Metric 12/data type affected metrics/tickets submitted by data type----
+
+  #count with drill table with drills
+  measure: data_type_affected_count{
+    type:  count
+    drill_fields: [id, ICP_number, submit_date__c_date, data_type__c, data_asset_group__c]
+
+  }
+
+  #calls DATA_TYPE__C from the table, provides visual drills on mouse click
+  dimension: data_type_affected_drill {
+    type:  string
+    sql:   CASE WHEN ${TABLE}.DATA_TYPE__C IS NULL THEN 'ø' ELSE ${TABLE}.DATA_TYPE__C END;;
+    #passes through group originating ticket (data asset/group) and date as a filter to a dashboard showing Data Type
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/245?Group%20Originating%20Ticket={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+
+  }
+
+
+
+  #metric 13 has been removed
+
+
+
+
+  #-----Metric 14/performance and forecasting/open vs closed tickets----
+
+
+  #********************************************************************************
+  #See the View: open_close_count_status for the comments regarding the line graph
+  #********************************************************************************
+
+  #count located on the dashboard with drills
+  measure: ticket_status_count {
+    type: count
+    drill_fields: [id, ICP_number, status__c, data_asset_group__c, css_assignee__c]
+  }
+
+
+
+
+
+#-----Metric 15/analyst performance/DRR Analyst Average Turn Time & DRR Team Turn Time Trends----
+#reference view: Median_historical_analyst performance for DRR Analyst Median Turn Time
+
+
+
+
+
+
+#calls CSS_ASSIGNEE__C from the table, provides visual drills on mouse click
+  dimension: css_assignee_drill_15 {
+    type: string
+    sql: CASE WHEN ${TABLE}.CSS_ASSIGNEE__C IS NULL THEN 'ø' ELSE ${TABLE}.CSS_ASSIGNEE__C END;;
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing a Histogram
+      label: "Explore '{{value}}' by Histogram"
+      url: "/dashboards/196?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+    }
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Assigned Tickets Over Time
+      label: "Explore '{{value}}' by Assigned Tickets Over Time"
+      url: "/dashboards/212?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+    }
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Group Originating Ticket
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/246?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+    }
+#     link: {
+#       label: "Explore '{{value}}' by Average Days To Triage Over Time"
+#       url: "/dashboards/213?Assignee={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+#     }
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Status
+      label: "Explore '{{value}}' by Status"
+      url: "/dashboards/215?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+    }
+  }
+
+
+  #find the difference between the assignee receipt date and assignee referred date to determine performance
+  dimension: days_bw_receipt_and_referred{
+    type: number
+    sql:  (DATEDIFF(dd, [ASSIGNEE_RECEIPT_DATE__C],[ASSIGNEE_REFERRED_DATE__C]))
+  -(DATEDIFF(wk, [ASSIGNEE_RECEIPT_DATE__C], [ASSIGNEE_REFERRED_DATE__C]) * 2)
+  -(CASE WHEN DATENAME(dw, [ASSIGNEE_RECEIPT_DATE__C]) = 'Sunday' THEN 1 ELSE 0 END)
+  -(CASE WHEN DATENAME(dw, [ASSIGNEE_REFERRED_DATE__C]) = 'Saturday' THEN 1 ELSE 0 END) ;;
+    label: "Turn-Time (Days)"
+  }
+
+
+
+#reference the difference and graph onto a histogram set up with 12 buckets
+  dimension: days_bw_receipt_and_referred_tier {
+    type: tier
+    tiers: [0,1,2,3,4,5,6,7,8,9,10,11]
+    style: integer
+    sql: ${days_bw_receipt_and_referred} ;;
+
+  }
+
+#count every instance where it took x amount of days, x+1 amount of days, etc.
+  measure: metric_15_histogram_count {
+    type: count
+    drill_fields: [id, ICP_number, status__c, css_assignee__c, business_priority__c, di_map_resolution__c, assignee_receipt_date__c_date, assignee_referred_date__c_date, days_bw_receipt_and_referred]
+  }
+
+#reference the difference to then find an average of this field
+#round to 4 decimal places
+#add drills to provide relevant data
+  measure: average_receipt_to_referred {
+    type:  number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${days_bw_receipt_and_referred} AS FLOAT)), 4) ;;
+    drill_fields: [id, ICP_number, status__c, css_assignee__c, business_priority__c, di_map_resolution__c, assignee_receipt_date__c_date, assignee_referred_date__c_date, days_bw_receipt_and_referred]
+  }
+
+#for the status drill
+#set up a completed vs other situation to determine summarized ticketing statuses
+  dimension: status_complete_or_other {
+    type: string
+    sql:  CASE WHEN ${TABLE}.STATUS__C = 'Completed' THEN 'Completed' ELSE 'Other' END;;
+  }
+
+#provide a count with drill fields to count the dimension status_complete_or_other
+  measure: status_complete_or_other_count {
+    type: count
+    drill_fields: [id, ICP_number, status__c, submit_date__c_date]
+  }
+
+
+#determine the analysts who need to fix their tickets
+  measure: negative_turn_time_count {
+    type:  count
+    drill_fields: [id, ICP_number, status__c, css_assignee__c, business_priority__c, di_map_resolution__c, assignee_receipt_date__c_date, assignee_referred_date__c_date, days_bw_receipt_and_referred]
+  }
+
+#-----Metric 16/icp completion metrics/DRR Analyst Completion and DRR Team Completion Trends----
+
+
+
+
+#calls CSS_ASSIGNEE__C from the table, provides visual drills on mouse click
+  dimension: css_assignee_drill_16 {
+    type: string
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;;
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing a Histogram
+      label: "Explore '{{value}}' by Histogram"
+      url: "/dashboards/197?DRR%20Analyst={{value}}&Submit%20Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+    #passes through DRR Analyst and date as a filter to a dashboard showing Assigned Tickets Over Time
+    label: "Explore '{{value}}' by Assigned Tickets Over Time"
+    url: "/dashboards/212?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+  }
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Group Originating Ticket
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/248?DRR%20Analyste={{value}}&Submit%20Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Status
+      label: "Explore '{{value}}' by Status"
+      url: "/dashboards/215?DRR%20Analyst={{value}}&Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}"
+    }
+
+  }
+
+#find the difference between the assignee receipt date and assignee referred date to determine performance
+  dimension: days_bw_submit_and_completion{
+    type: number
+    sql:  (DATEDIFF(dd, [SUBMIT_DATE__C],[COMPLETION_DATE__C]))
+        -(DATEDIFF(wk, [SUBMIT_DATE__C], [COMPLETION_DATE__C]) * 2)
+        -(CASE WHEN DATENAME(dw, [SUBMIT_DATE__C]) = 'Sunday' THEN 1 ELSE 0 END)
+        -(CASE WHEN DATENAME(dw, [COMPLETION_DATE__C]) = 'Saturday' THEN 1 ELSE 0 END) ;;
+  }
+
+
+
+#reference the difference and graph onto a histogram set up with 12 buckets
+  dimension: days_bw_submit_and_completion_tier {
+    type: tier
+    tiers: [0,1,2,3,4,5,6,7,8,9,10,11]
+    style: integer
+    sql: ${days_bw_submit_and_completion} ;;
+
+  }
+
+#count every instance where it took x amount of days, x+1 amount of days, etc.
+  measure: metric_16_drill_count {
+    type: count
+    drill_fields: [id, ICP_number, css_assignee__c, submit_date__c_date, completion_date__c_date, days_bw_submit_and_completion]
+  }
+
+#reference the difference to then find an average of this field
+#round to 4 decimal places
+#add drills to provide relevant data
+  measure: average_submit_to_completion {
+    type:  number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${days_bw_submit_and_completion} AS FLOAT)), 4) ;;
+    drill_fields: [id, ICP_number,  submit_date__c_date, completion_date__c_date, days_bw_submit_and_completion]
+  }
+
+
+#find the difference between the assignee receipt date and completion date to determine performance
+  dimension: days_bw_receipt_and_completion_date{
+    type: number
+    sql:  (DATEDIFF(dd, [ASSIGNEE_RECEIPT_DATE__C],[COMPLETION_DATE__C]))
+        -(DATEDIFF(wk, [ASSIGNEE_RECEIPT_DATE__C], [COMPLETION_DATE__C]) * 2)
+        -(CASE WHEN DATENAME(dw, [ASSIGNEE_RECEIPT_DATE__C]) = 'Sunday' THEN 1 ELSE 0 END)
+        -(CASE WHEN DATENAME(dw, [COMPLETION_DATE__C]) = 'Saturday' THEN 1 ELSE 0 END) ;;
+    label: "Days Between Receipt and Completion Date"
+  }
+
+  #reference the difference to then find an average of this field
+#round to 4 decimal places
+#add drills to provide relevant data
+  measure: average_receipt_to_completion {
+    type: number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${days_bw_receipt_and_completion_date}AS FLOAT)), 4) ;;
+    drill_fields: [id, ICP_number,  submit_date__c_date, assignee_receipt_date__c_date, completion_date__c_date,days_bw_receipt_and_completion_date]
+  }
+
+
+
+
+#-----Metric 17/tickets exceeding window/tickets greater than 3 days old----
+
+
+
+  #count with drills
+  measure: tickets_exceeding_window_count {
+    type: count
+    drill_fields: [id, ICP_number, business_priority__c, css_assignee__c, eta_due_date__c_date]
+  }
+
+  #calls BUSINESS_PRIORITY__C from the table, provides visual drills on mouse click
+  dimension: business_priority17{
+    type: string
+    sql: CASE WHEN ${TABLE}.BUSINESS_PRIORITY__C IS NULL THEN 'ø' ELSE ${TABLE}.BUSINESS_PRIORITY__C END ;;
+    #passes through Businss Priority, a before 3 days date, and a threshold date as a filter to a dashboard showing DRR Analysts
+    link: {
+      label: "Explore '{{value}}' by DRR Analyst"
+      url: "/dashboards/188?Business%20Priority={{value}}&Receipt%20Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}&Receipt%20Date%20(Threshold)={{_filters['sf_issue_management__c.assignee_receipt_date__c_month'] | url_encode }} "
+    }
+    #passes through Businss Priority, a before 3 days date, and a threshold date as a filter to a dashboard showing Group Originating Ticket
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/247?Business%20Priority={{value}}&Receipt%20Date={{_filters['sf_issue_management__c.assignee_receipt_date__c_date'] | url_encode }}&Receipt%20Date%20(Threshold)={{_filters['sf_issue_management__c.assignee_receipt_date__c_month'] | url_encode }} "
+    }
+  }
+
+
+
+  #-----Metric 18/staffing requirements/tickets greater than 3 days old----
+
+
+  #calls CSS_ASSIGNEE__C from the table, provides visual drills on mouse click
+  dimension: css_assignee_metric_18 {
+    type: string
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;;
+    link: {
+      #passes through DRR Analyst and date as a filter to a dashboard showing Status
+      label: "Explore '{{value}}' by Status"
+      url: "/dashboards/221?Assignee={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    #passes through DRR Analyst and date as a filter to a dashboard showing Group Originating Tickets
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/222?Assignee={{value}}&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+
+
+   #-----Metric 19/cognizant performance/cognizant analyst performance----
+
+  #calls OFFSHORE_ANALYST__C from the table, provides visual drills on mouse click
+  dimension: offshore_analyst__c_19{
+    type: string
+    sql: ${TABLE}.OFFSHORE_ANALYST__C ;;
+    link: {
+      #passes through Offshore Analyst and date as a filter to a dashboard showing a Histogram for that analyst
+      label: "Explore '{{value}}' by Histogram"
+      url: "/dashboards/198?Offshore%20Assignee={{value}}&Date={{_filters['sf_issue_management__c.offshore_assignee_receipt_date__c_date'] | url_encode }}"
+    }
+    #passes through Offshore Analyst and date as a filter to a dashboard showing status of the ticket for that analyst
+    link: {
+      label: "Explore '{{value}}' by Status"
+      url: "/dashboards/223?Offshore%20Assignee={{value}}&Date={{_filters['sf_issue_management__c.offshore_assignee_receipt_date__c_date'] | url_encode }}"
+    }
+  }
+
+  #find the difference between the offshore assignee receipt date and complete date to determine performance
+
+  dimension: days_bw_offshore_receipt_and_offshore_completion{
+    type: number
+    sql:  (DATEDIFF(dd, [OFFSHORE_ASSIGNEE_RECEIPT_DATE__C],[OFFSHORE_ASSIGNEE_COMPLETE_DATE__C]))
+        ;;
+  }
+#reference the difference and graph onto a histogram set up with 12 buckets
+  dimension: days_bw_offshore_receipt_and_offshore_completion_tier {
+    type: tier
+    tiers: [0,1,2,3,4,5,6,7,8,9,10,11]
+    style: integer
+    sql: ${days_bw_offshore_receipt_and_offshore_completion} ;;
+  }
+
+  #count every instance where it took x amount of days, x+1 amount of days, etc.
+  measure: metric_19_histogram_count {
+    type: count
+    drill_fields: [id, ICP_number, status__c, business_priority__c, offshore_assignee_receipt_date__c_date, offshore_assignee_complete_date__c_date, days_bw_offshore_receipt_and_offshore_completion]
+  }
+
+  #reference the difference to then find an average of this field
+  #round to 4 decimal places
+  #add drills to provide relevant data
+  measure: average_offshore_receipt_to_offshore_completion {
+    type:  number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${days_bw_offshore_receipt_and_offshore_completion} AS FLOAT)),4) ;;
+    drill_fields: [id, ICP_number, status__c, offshore_assignee_receipt_date__c_date, offshore_assignee_complete_date__c_date, days_bw_offshore_receipt_and_offshore_completion]
+  }
+
+  #metric 20 - tickets withheld & 21 anomalous tickets have no drills of any sort
+
+  #Issue deduction
+  dimension: issue_type_suzanne {
+    type:  string
+    sql:  CASE WHEN ${TABLE}.ISSUE_TYPE__C IS NULL THEN 'ø' ELSE ${TABLE}.ISSUE_TYPE__C END;;
+    link: {
+      label: "Explore '{{value}}' by Affected Data Asset"
+      url: "/dashboards/504?Issue%20Type={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+
+  }
+
+  dimension: affected_data_asset_suzanne {
+    type: string
+    sql: CASE WHEN ${TABLE}.DI_PROCESS_TYPE__C IS NULL THEN 'ø' ELSE ${TABLE}.DI_PROCESS_TYPE__C END;;
+    link: {
+      label: "Explore '{{value}}' by Data Type"
+      url: "/dashboards/505?Affected%20Data%20Asset={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}
+            &Issue%20Type={{_filters['sf_issue_management__c.issue_type_suzanne'] | url_encode }}
+            "
+    }
+  }
+
+  dimension: data_type_suzanne {
+    type: string
+    sql: CASE WHEN ${TABLE}.DATA_TYPE__C IS NULL THEN 'ø' ELSE ${TABLE}.DATA_TYPE__C END;;
+    link: {
+      label: "Explore '{{value}}' by Root Cause/Problem Type"
+      url: "/dashboards/506?Data%20Type={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}
+            &Issue%20Type={{_filters['sf_issue_management__c.issue_type_suzanne'] | url_encode }}
+            &Affected%20Data%20Asset={{_filters['sf_issue_management__c.affected_data_asset_suzanne'] | url_encode }}"
+    }
+  }
+
+  dimension: problem_type_suzanne {
+    type: string
+    sql: CASE WHEN ${TABLE}.PROBLEM_TYPE__C IS NULL THEN 'ø' ELSE ${TABLE}.PROBLEM_TYPE__C END;;
+    link: {
+      label: "Explore '{{value}}' by DI/Map Resolution"
+      url: "/dashboards/507?Problem%20Type={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}
+            &Issue%20Type={{_filters['sf_issue_management__c.issue_type_suzanne'] | url_encode }}
+            &Affected%20Data%20Asset={{_filters['sf_issue_management__c.affected_data_asset_suzanne'] | url_encode }}
+            &Data%20Type={{_filters['sf_issue_management__c.data_type_suzanne'] | url_encode }}"
+    }
+  }
+
+  dimension: di_map_resolution_suzanne {
+    type: string
+    sql: CASE WHEN ${TABLE}.DI_MAP_RESOLUTION__C IS NULL THEN 'ø' ELSE ${TABLE}.DI_MAP_RESOLUTION__C END;;
+#     link: {
+#       label: "Explore '{{value}}' by Avg Total Days To Resolution"
+#       url: "/dashboards/507?DI%2FMap%20Resolution={{value}}
+#             &Problem%20Type={{_filters['sf_issue_management__c.problem_type__c'] | url_encode }}
+#             &Data%20Type={{_filters['sf_issue_management__c.data_type__c'] | url_encode }}
+#             &&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}
+#             &&Issue%20Type={{_filters['sf_issue_management__c.issue_type__c'] | url_encode }}
+#             &&Affected%20Data%20Asset={{_filters['sf_issue_management__c.di_process_type__c'] | url_encode }}"
+#     }
+#
+#     link: {
+#       label: "Explore '{{value}}' by Avg Total Days With DRR Analyst"
+#       url: "/dashboards/507?DI%2FMap%20Resolution={{value}}
+#       &Problem%20Type={{_filters['sf_issue_management__c.problem_type__c'] | url_encode }}
+#       &Data%20Type={{_filters['sf_issue_management__c.data_type__c'] | url_encode }}
+#       &&Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}
+#       &&Issue%20Type={{_filters['sf_issue_management__c.issue_type__c'] | url_encode }}
+#       &&Affected%20Data%20Asset={{_filters['sf_issue_management__c.di_process_type__c'] | url_encode }}"
+#     }
+  }
+
+  measure: average_total_days_open {
+    type:  number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${TABLE}.TOTAL_DAYS_OPEN__C AS FLOAT)), 4) ;;
+    drill_fields: [id, ICP_number, submit_date__c_date, status__c, assignee__c, css_assignee__c, data_asset_group__c,
+                  di_map_resolution__c, age__c, total_days_open__c ,sme_team__c, 3rd_party_vendor__c,
+                  edg_sme_assignee__c, edg_sme_assignee_receipt_date__c_date, edg_sme_complete__c_date,
+                  eta_due_date__c_date, eta_provided__c_date, est_work_completion_date__c_date, eta_current__c_date,
+                  customer_name_requester__c]
+  }
+
+  measure: average_days_with_drr_analyst {
+      type:  number
+      value_format_name: decimal_4
+      sql: ROUND(AVG(CAST(${TABLE}.DAYS_WITH_DRR_ANALYST__C AS FLOAT)), 4) ;;
+      drill_fields: [id, ICP_number, submit_date__c_date, status__c, assignee__c, css_assignee__c, data_asset_group__c,
+                  di_map_resolution__c, age__c, total_days_open__c ,sme_team__c, 3rd_party_vendor__c,
+                  edg_sme_assignee__c, edg_sme_assignee_receipt_date__c_date, edg_sme_complete__c_date,
+                  eta_due_date__c_date, eta_provided__c_date, est_work_completion_date__c_date, eta_current__c_date,
+                  customer_name_requester__c]
+  }
+
+  measure: average_days_with_edg_sme {
+    type:  number
+    value_format_name: decimal_4
+    sql: ROUND(AVG(CAST(${TABLE}.DAYS_WITH_EDG_SME__C AS FLOAT)), 4) ;;
+    drill_fields: [id, ICP_number, submit_date__c_date, status__c, assignee__c, css_assignee__c, data_asset_group__c,
+                  di_map_resolution__c, age__c, total_days_open__c ,sme_team__c, 3rd_party_vendor__c,
+                  edg_sme_assignee__c, edg_sme_assignee_receipt_date__c_date, edg_sme_complete__c_date,
+                  eta_due_date__c_date, eta_provided__c_date, est_work_completion_date__c_date, eta_current__c_date,
+                  customer_name_requester__c]
+  }
+
+  dimension: total_days_open_hist {
+    type: tier
+    tiers: [0,1,2,3,4,5]
+    style: integer
+    sql: ${TABLE}.TOTAL_DAYS_OPEN__C ;;
+  }
+
+  measure: total_days_open_hist_count {
+    type: count
+    drill_fields: [id, ICP_number, total_days_open_hist, total_days_open__c]
+  }
+
+  dimension: days_with_drr_analyst_hist {
+    type: tier
+    tiers: [0,1,2,3,4,5]
+    style: integer
+    sql: ${TABLE}.DAYS_WITH_DRR_ANALYST__C ;;
+    label: "Days With DRR Analyst _"
+  }
+
+  measure: days_with_drr_analyst_hist_count {
+    type: count
+    drill_fields: [id, ICP_number, days_with_drr_analyst_hist, days_with_drr_analyst__c]
+  }
+
+  dimension: days_with_edg_sme_hist {
+    type: tier
+    tiers: [0,1,2,3,4,5]
+    style: integer
+    sql: ${TABLE}.DAYS_WITH_EDG_SME__C ;;
+  }
+
+  measure: days_with_edg_sme_hist_count {
+    type: count
+    drill_fields: [id, ICP_number, days_with_edg_sme_hist, days_with_edg_sme__c]
+  }
+
+  dimension: tickets_submitted_by_drr_analyst {
+    type: string
+    sql: ${TABLE}.CSS_ASSIGNEE__C ;;
+    link: {
+      label: "Explore '{{value}}' by Status"
+      url: "/dashboards/513?DRR%20Analyst={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+      label: "Explore '{{value}}' by Customer"
+      url: "/dashboards/514?DRR%20Analyst={{value}}
+            &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+      label: "Explore '{{value}}' by Group Originating Ticket"
+      url: "/dashboards/515?DRR%20Analyst={{value}}
+      &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+    link: {
+      label: "Explore '{{value}}' by SME Team"
+      url: "/dashboards/516?DRR%20Analyst={{value}}
+      &Date={{_filters['sf_issue_management__c.submit_date__c_date'] | url_encode }}"
+    }
+  }
+
+  #-----
+  #Suggest Filters
+
+  dimension: issue_type_suggest {
+    sql: ${TABLE}.ISSUE_TYPE__C ;;
+    suggest_dimension: issue_type__c
+  }
+
+  dimension: affected_data_asset_suggest {
+    sql: ${TABLE}.DI_PROCESS_TYPE__C ;;
+    suggest_dimension: di_process_type__c
+  }
+
+  dimension: data_type_suggest {
+    sql: ${TABLE}.DATA_TYPE__C ;;
+    suggest_dimension: data_type__c
+  }
+
+  dimension: root_cause_suggest {
+    sql: ${TABLE}.PROBLEM_TYPE__C ;;
+    suggest_dimension: problem_type__c
+  }
+
+  dimension: status_open_vs_closed {
+    type: string
+    sql:  CASE WHEN ${TABLE}.STATUS__C LIKE 'c%' THEN 'Closed'
+    WHEN ${TABLE}.STATUS__C LIKE '%cancel%' THEN 'Closed'
+         ELSE 'Open' END;;
+  }
+
+#-----------------------------------------------------------------------------------------------------------------------------------
+#RCA fields
+
+
+  measure: RCA_FIPS_COUNT {
+    type: count
+    drill_fields: [id, ICP_number, description__c, num_parcels_affected__c, submit_date__c_date, county_state_fips__c, data_type__c, problem_type__c, issue_type__c, product_affected__c, data_asset_group__c, global_issue__c]
+  }
+
+  measure: non_closed_tickets {
+    type:  count
+    drill_fields: [submit_date__c_date, county_state_fips__c, data_type__c]
+  }
+
+  #eric's dashboard rca
+  dimension: fips_rca {
+    type: string
+    sql: ${TABLE}.FIPS__C ;;
+    map_layer_name: us_counties_fips
+    drill_fields: [product_affected__c, data_type__c, data_asset_group__c, problem_type__c]
+
+  }
+
+  measure: eric_rca_count {
+    type: count
+    drill_fields: [submit_date__c_date,  county_state_fips__c, affected_apn__c, affected_address__c, status__c, product_affected__c, data_asset_group__c, data_type__c, problem_type__c, di_process_type__c, customer_name_requester__c, description__c]
+  }
+
+  measure: romeo_rca_count {
+    type:  count
+    drill_fields: [id, submit_date__c_date, county_state_fips__c, affected_apn__c, affected_address__c, status__c, product_affected__c, data_asset_group__c, data_type__c, problem_type__c, di_process_type__c, customer_name_requester, description__c ]
+  }
+
+  dimension: data_type_rca {
+    type: string
+    sql: ${TABLE}.DATA_TYPE__C ;;
+    drill_fields: [fips_rca]
+  }
+
+
+}
